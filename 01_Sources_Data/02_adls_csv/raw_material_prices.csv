@@ -1,0 +1,7 @@
+commodity_id,commodity_name,market_index,unit_of_measure,price_usd,currency,effective_date
+1,Malta Pilsen de Cebada,CBOT_AGRI_M1,Metric Ton,480.50,USD,2026-09-20
+2,Lúpulo Cascade Pellets,HOPS_INDEX_US,Kilogram,18.75,USD,2026-09-20
+3,Levadura Cervecera Ale SafAle,YEAST_EUR_SPEC,Kilogram,35.20,USD,2026-09-20
+4,Azúcar Refinada No.11,ICE_SUGAR_11,Metric Ton,520.00,USD,2026-09-20
+5,Botella Vidrio Ámbar 650ml,BOTTLE_PACK_GLS,Thousand Units,140.00,USD,2026-09-20
+6,Lata Aluminio Impresa 355ml,CAN_ALU_PACK,Thousand Units,95.00,USD,2026-09-20

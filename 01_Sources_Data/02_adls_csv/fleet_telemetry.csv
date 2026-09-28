@@ -1,0 +1,7 @@
+telemetry_id,truck_id,route_code,brewery_id,distributor_id,liters_loaded,odometer_km,fuel_gallons,status,timestamp
+1,TRK-01,RT-ESTE-01,1,1,7800.0,45210.5,35.4,Completed,2026-09-21 15:30:00
+2,TRK-02,RT-METRO-02,1,2,12480.0,28450.2,48.2,Completed,2026-09-21 17:45:00
+3,TRK-03,RT-YUMA-05,3,3,2130.0,12340.0,18.5,Completed,2026-09-22 12:10:00
+4,TRK-04,RT-CIBAO-03,2,4,9360.0,67890.1,52.0,In-Transit,2026-09-22 18:20:00
+5,TRK-01,RT-METRO-01,1,5,3408.0,45420.0,22.1,Completed,2026-09-23 10:15:00
+6,TRK-05,RT-CIBAO-01,2,2,1260.0,33120.4,14.6,Completed,2026-09-23 16:00:00

@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.venv
+venv/
+
+# Environment & Secrets (Zero-Trust)
+.env
+*.env
+*secret*
+*credential*
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini

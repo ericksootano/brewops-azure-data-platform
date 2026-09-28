@@ -1,0 +1,690 @@
+{
+  "datasets": [
+    {
+      "name": "9643aefc",
+      "displayName": "sales_performance_daily",
+      "config": {
+        "version": "1.1",
+        "source": "adb_brewops_dev.gold.sales_performance_daily",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "66539516",
+      "displayName": "distributor_360",
+      "config": {
+        "version": "1.1",
+        "source": "adb_brewops_dev.gold.distributor_360",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "817ed6ec",
+      "displayName": "brewery_efficiency_summary",
+      "config": {
+        "version": "1.1",
+        "source": "adb_brewops_dev.gold.brewery_efficiency_summary",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "d3ee5718",
+      "displayName": "Principal",
+      "layout": [
+        {
+          "widget": {
+            "name": "ingresos-region-categoria-cerveza",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "beer_category",
+                      "expression": "`beer_category`"
+                    },
+                    {
+                      "name": "brewery_region",
+                      "expression": "`brewery_region`"
+                    },
+                    {
+                      "name": "sum(gross_revenue_usd)",
+                      "expression": "SUM(`gross_revenue_usd`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": {
+                  "value": "### <span style=\"text-align:center;display:block;\">Ingresos por Categoría de Cerveza</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "brewery_region",
+                  "displayName": "Región Cervecera",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(gross_revenue_usd)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Suma Total de Ingresos",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "beer_category",
+                  "displayName": "Categoría de Cerveza",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "Light",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 3
+                        }
+                      }
+                    ]
+                  }
+                },
+                "label": {
+                  "show": true,
+                  "showTotal": false
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 8,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-gross-revenue-usd",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "sum(active_distributors_count)",
+                      "expression": "SUM(`active_distributors_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "Distribuidores Activos",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(active_distributors_count)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "total-litros-despachados",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "sum(total_liters_sold)",
+                      "expression": "SUM(`total_liters_sold`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "Total Litros Despachados",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_liters_sold)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 2,
+            "width": 4,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "distribucion-volumen-tipo-empaque",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "sum(total_liters_sold)",
+                      "expression": "SUM(`total_liters_sold`)"
+                    },
+                    {
+                      "name": "package_type",
+                      "expression": "`package_type`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": {
+                  "value": "<span style=\"text-align:center;display:block;\">Distribución de Volumen por Tipo de Empaque</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(total_liters_sold)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Total de Hectolitros vendidos"
+                },
+                "color": {
+                  "fieldName": "package_type",
+                  "displayName": "Tipo de paquete",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 8,
+            "y": 5,
+            "width": 4,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "utilizacion-vs-capacidad-instalada-por-planta",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "817ed6ec",
+                  "fields": [
+                    {
+                      "name": "avg(capacity_utilization_pct)",
+                      "expression": "AVG(`capacity_utilization_pct`)"
+                    },
+                    {
+                      "name": "brewery_name",
+                      "expression": "`brewery_name`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"text-align:center;display:block;\">% de Utilización vs Capacidad Instalada por Planta</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "avg(capacity_utilization_pct)",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Capacidad en porcentaje",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "brewery_name",
+                  "displayName": "Cervecería",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 11,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "monitor-exposicion-crediticia-distribuidor",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "66539516",
+                  "fields": [
+                    {
+                      "name": "distributor_name",
+                      "expression": "`distributor_name`"
+                    },
+                    {
+                      "name": "channel_type",
+                      "expression": "`channel_type`"
+                    },
+                    {
+                      "name": "credit_limit_usd",
+                      "expression": "`credit_limit_usd`"
+                    },
+                    {
+                      "name": "total_lifetime_spend_usd",
+                      "expression": "`total_lifetime_spend_usd`"
+                    },
+                    {
+                      "name": "credit_utilization_pct",
+                      "expression": "`credit_utilization_pct`"
+                    }
+                  ],
+                  "disaggregated": true,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`credit_utilization_pct`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"text-align:center;display:block;\">Monitor de Exposición Crediticia por Distribuidor</span>",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "distributor_name"
+                  },
+                  {
+                    "fieldName": "channel_type"
+                  },
+                  {
+                    "fieldName": "credit_limit_usd"
+                  },
+                  {
+                    "fieldName": "total_lifetime_spend_usd"
+                  },
+                  {
+                    "fieldName": "credit_utilization_pct"
+                  }
+                ],
+                "rowOrder": [
+                  {
+                    "by": "column",
+                    "field": {
+                      "index": 4
+                    }
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 11,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "697d6dfc",
+            "imageSpec": {
+              "image": {
+                "source": {
+                  "url": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGFyaWEtbGFiZWw9IkJyZXdPcHMgRXhlY3V0aXZlIERhc2hib2FyZCBsb2dvIiBoZWlnaHQ9IjE4MCIgcm9sZT0iaW1nIiB2aWV3Qm94PSIwIDAgNjAwIDE4MCIgd2lkdGg9IjYwMCI+CiAgPHRpdGxlPkJyZXdPcHMgRXhlY3V0aXZlIERhc2hib2FyZDwvdGl0bGU+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTlBMjNCIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNyI+CiAgICA8cGF0aCBkPSJNMjggNTRoMTAybC0xMCA4MmMtMSA5LTggMTUtMTcgMTVINTVjLTkgMC0xNi02LTE3LTE1TDI4IDU0WiIvPgogICAgPHBhdGggZD0iTTEzMCA2OWgxMmMxNyAwIDE4IDM3IDAgNDNoLTE3Ii8+CiAgPC9nPgogIDxwYXRoIGQ9Ik0yMyA1MmMwLTExIDktMTkgMjAtMTkgNSAwIDEwIDIgMTMgNSA0LTkgMTMtMTUgMjMtMTUgMTAgMCAxOSA2IDIzIDE1IDMtMyA4LTUgMTMtNSAxMSAwIDIwIDggMjAgMTkgMCA4LTYgMTUtMTQgMTVIMzdjLTggMC0xNC03LTE0LTE1WiIgZmlsbD0iI0U5QTIzQiIvPgogIDxnIGZpbGw9IiNGRkZGRkYiPgogICAgPHJlY3QgaGVpZ2h0PSIyNiIgcng9IjIiIHdpZHRoPSIxMCIgeD0iNTUiIHk9IjEwNyIvPgogICAgPHJlY3QgaGVpZ2h0PSIzOSIgcng9IjIiIHdpZHRoPSIxMCIgeD0iNzMiIHk9Ijk0Ii8+CiAgICA8cmVjdCBoZWlnaHQ9IjUzIiByeD0iMiIgd2lkdGg9IjEwIiB4PSI5MSIgeT0iODAiLz4KICA8L2c+CiAgPHRleHQgZmlsbD0iI0ZGRkZGRiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjY2IiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iLTMiIHg9IjE3MCIgeT0iMTA1Ij5CcmV3T3BzPC90ZXh0PgogIDx0ZXh0IGZpbGw9IiNGRkZGRkYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9IjcwMCIgbGV0dGVyLXNwYWNpbmc9IjQiIHg9IjE3NCIgeT0iMTM4Ij5FWEVDVVRJVkUgREFTSEJPQVJEPC90ZXh0Pgo8L3N2Zz4="
+                }
+              },
+              "frame": {},
+              "style": {}
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "6a722fde",
+            "multilineTextboxSpec": {
+              "lines": [
+                "# <span style=\"text-align:center;display:block\"><span style=\"font-size: 36px;line-height: 1.5;\">BrewOps Executive Dashboard</span></span>"
+              ],
+              "verticalAlign": "VERTICAL_ALIGN_CENTER"
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 9,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "bfd23b86",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "sum(gross_revenue_usd)",
+                      "expression": "SUM(`gross_revenue_usd`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "headerAlignment": "center",
+                "title": {
+                  "value": "Total de Ingresos (USD)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(gross_revenue_usd)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 4,
+            "height": 3
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "e3cdd6c0",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "f35fe848",
+            "queries": [
+              {
+                "name": "dashboards/01f1baa30b0411d0a1f1ab057c8a6662/datasets/01f1baaa31921d6db114ff18652f281b_order_date",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "order_date",
+                      "expression": "`order_date`"
+                    },
+                    {
+                      "name": "order_date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "order_date",
+                    "queryName": "dashboards/01f1baa30b0411d0a1f1ab057c8a6662/datasets/01f1baaa31921d6db114ff18652f281b_order_date"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "9ada98ac",
+            "queries": [
+              {
+                "name": "dashboards/01f1baa30b0411d0a1f1ab057c8a6662/datasets/01f1baaa31921d6db114ff18652f281b_brewery_region",
+                "query": {
+                  "datasetName": "9643aefc",
+                  "fields": [
+                    {
+                      "name": "brewery_region",
+                      "expression": "`brewery_region`"
+                    },
+                    {
+                      "name": "brewery_region_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "brewery_region",
+                    "queryName": "dashboards/01f1baa30b0411d0a1f1ab057c8a6662/datasets/01f1baaa31921d6db114ff18652f281b_brewery_region"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

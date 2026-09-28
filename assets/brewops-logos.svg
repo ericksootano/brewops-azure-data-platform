@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" aria-label="BrewOps Executive Dashboard logo" height="180" role="img" viewBox="0 0 600 180" width="600">
+  <title>BrewOps Executive Dashboard</title>
+  <g fill="none" stroke="#E9A23B" stroke-linecap="round" stroke-linejoin="round" stroke-width="7">
+    <path d="M28 54h102l-10 82c-1 9-8 15-17 15H55c-9 0-16-6-17-15L28 54Z"/>
+    <path d="M130 69h12c17 0 18 37 0 43h-17"/>
+  </g>
+  <path d="M23 52c0-11 9-19 20-19 5 0 10 2 13 5 4-9 13-15 23-15 10 0 19 6 23 15 3-3 8-5 13-5 11 0 20 8 20 19 0 8-6 15-14 15H37c-8 0-14-7-14-15Z" fill="#E9A23B"/>
+  <g fill="#FFFFFF">
+    <rect height="26" rx="2" width="10" x="55" y="107"/>
+    <rect height="39" rx="2" width="10" x="73" y="94"/>
+    <rect height="53" rx="2" width="10" x="91" y="80"/>
+  </g>
+  <text fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-size="66" font-weight="700" letter-spacing="-3" x="170" y="105">BrewOps</text>
+  <text fill="#FFFFFF" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" letter-spacing="4" x="174" y="138">EXECUTIVE DASHBOARD</text>
+</svg>
